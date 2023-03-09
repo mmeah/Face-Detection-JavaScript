@@ -33,6 +33,7 @@ video.addEventListener('play', () => {
 
     const ctx = canvas.getContext("2d");
     const nose = resizedLandmarks.positions;
+    console.log(nose);
     const noseX = nose[0]._x;
     const noseY = nose[0]._y;
     const circle = new Path2D();
@@ -57,5 +58,5 @@ video.addEventListener('play', () => {
     drawBox.draw(canvas, resizedDetections)
     
 
-  }, 500)
+  }, 5000)
 })
