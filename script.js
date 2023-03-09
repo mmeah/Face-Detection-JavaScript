@@ -24,13 +24,14 @@ video.addEventListener('play', () => {
     const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions();
     const landmarks = await faceapi.detectFaceLandmarks(video);
     const resizedDetections = faceapi.resizeResults(detections, displaySize);
+    const resizedLandmarks = faceapi.resizeResults(landmarks, displaySize);
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
     faceapi.draw.drawDetections(canvas, resizedDetections);
     faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
 
     const ctx = canvas.getContext("2d");
-    const nose = landmarks.getNose();
+    const nose = resizedLandmarks.getNose();
     const noseX = nose[0]._x;
     const noseY = nose[0]._y;
     const circle = new Path2D();
