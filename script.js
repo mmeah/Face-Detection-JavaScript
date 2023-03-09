@@ -17,7 +17,6 @@ function startVideo() {
 
 video.addEventListener('play', () => {
   const canvas = faceapi.createCanvasFromMedia(video);
-  canvas.filter = "grayscale(100%)";
   document.body.append(canvas);
   const displaySize = { width: video.width, height: video.height };
   faceapi.matchDimensions(canvas, displaySize);
@@ -29,6 +28,18 @@ video.addEventListener('play', () => {
     faceapi.draw.drawDetections(canvas, resizedDetections);
     faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
+
+    const ctx = canvas.getContext("2d");
+
+    ctx.beginPath();
+    ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
+    ctx.moveTo(110, 75);
+    ctx.arc(75, 75, 35, 0, Math.PI, false); // Mouth (clockwise)
+    ctx.moveTo(65, 65);
+    ctx.arc(60, 65, 5, 0, Math.PI * 2, true); // Left eye
+    ctx.moveTo(95, 65);
+    ctx.arc(90, 65, 5, 0, Math.PI * 2, true); // Right eye
+    ctx.stroke();
 
     const text = [
       JSON.stringify(landmarks.getNose()),
