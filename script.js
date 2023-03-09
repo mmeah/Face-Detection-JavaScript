@@ -29,10 +29,11 @@ video.addEventListener('play', () => {
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
 
     const text = [
+      detections.getNose(),
       'This is a textline!',
       'This is another textline!'
     ]
-    const anchor = { x: 200, y: 200 }
+    const anchor = { x: 0, y: 0 }
     // see DrawTextField below
     const drawOptions = {
       anchorPosition: 'TOP_LEFT',
