@@ -35,7 +35,7 @@ video.addEventListener('play', () => {
     const noseX = nose[0]._x;
     const noseY = nose[0]._y;
     const circle = new Path2D();
-    circle.arc(100+noseX, 35+noseY, 25, 0, 2 * Math.PI);
+    circle.arc(noseX, noseY, 25, 0, 2 * Math.PI);
     ctx.fill(circle);
 
     const text = [
