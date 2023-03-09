@@ -32,7 +32,7 @@ video.addEventListener('play', () => {
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
 
     const ctx = canvas.getContext("2d");
-    const nose = resizedLandmarks.getNose();
+    const nose = resizedLandmarks.positions;
     const noseX = nose[0]._x;
     const noseY = nose[0]._y;
     const circle = new Path2D();
