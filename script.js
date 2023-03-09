@@ -30,7 +30,7 @@ video.addEventListener('play', () => {
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
 
     const text = [
-      landmarks.getNose(),
+      JSON.stringify(landmarks.getNose()),
       'This is a textline!',
       'This is another textline!'
     ]
