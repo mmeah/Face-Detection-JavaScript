@@ -33,7 +33,7 @@ video.addEventListener('play', () => {
       'This is a textline!',
       'This is another textline!'
     ]
-    const anchor = { x: 0, y: 0 }
+    const anchor = { x: 50, y: 50 }
     // see DrawTextField below
     const drawOptions = {
       anchorPosition: 'TOP_LEFT',
