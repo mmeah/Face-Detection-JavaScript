@@ -27,7 +27,20 @@ video.addEventListener('play', () => {
     faceapi.draw.drawDetections(canvas, resizedDetections);
     faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
-    const nose = resizedDetections.getNose();
-    console.log(nose);
+
+    const text = [
+      'This is a textline!',
+      'This is another textline!'
+    ]
+    const anchor = { x: 200, y: 200 }
+    // see DrawTextField below
+    const drawOptions = {
+      anchorPosition: 'TOP_LEFT',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)'
+    }
+    const drawBox = new faceapi.draw.DrawTextField(text, anchor, drawOptions)
+    drawBox.draw(canvas, resizedDetections)
+    
+
   }, 500)
 })
