@@ -39,6 +39,8 @@ video.addEventListener('play', () => {
     ctx.fill(circle);
 
     const text = [
+      'NoseX:'+noseX,
+      'NoseY'+noseY,
       'This is a textline!',
       'This is another textline!'
     ]
