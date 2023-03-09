@@ -22,6 +22,7 @@ video.addEventListener('play', () => {
   faceapi.matchDimensions(canvas, displaySize);
   setInterval(async () => {
     const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions();
+    const landmarks = await faceapi.detectFaceLandmarks(video);
     const resizedDetections = faceapi.resizeResults(detections, displaySize);
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
     faceapi.draw.drawDetections(canvas, resizedDetections);
@@ -29,7 +30,7 @@ video.addEventListener('play', () => {
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
 
     const text = [
-      detections.getNose(),
+      landmarks.getNose(),
       'This is a textline!',
       'This is another textline!'
     ]
